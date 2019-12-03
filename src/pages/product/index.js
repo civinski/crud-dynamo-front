@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import api from '../../services/API';
-import './styles.css';
-import { PropagateLoader } from 'react-spinners';
-import moment from 'moment'
+import React, { Component } from "react";
+import api from "../../services/API";
+import "./styles.css";
+import { PropagateLoader } from "react-spinners";
+import moment from "moment";
 
 export default class Product extends Component {
   constructor(props) {
@@ -21,37 +21,42 @@ export default class Product extends Component {
 
   getFilme = async () => {
     this.setState({ loading: true });
-    
-      await api
-        .get(`/filmes/${this.state.hashcod}`)
-        .then(res => {
-          console.log(res)
-          this.setState({
-            filme: res.data,
-            loading: false
-          });
-        })
-        .catch(e => {
-          this.setState({ loading: false });
+
+    await api
+      .get(`/filmes/${this.state.hashcod}`)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          filme: res.data,
+          loading: false
         });
-    
+      })
+      .catch(e => {
+        this.setState({ loading: false });
+      });
   };
 
   render() {
     return (
-      <div className="main">
+      <div className='main'>
         {this.state.loading ? (
-          <div className="loading">
-            <PropagateLoader color={'#37b6ae'} loading={this.state.loading} />
+          <div className='loading'>
+            <PropagateLoader color={"#37b6ae"} loading={this.state.loading} />
           </div>
         ) : (
-          <div className="product-info">
+          <div className='product-info'>
             <h1>{this.state.filme.nome}</h1>
-            <br/>
+            <br />
             <p>{this.state.filme.sinopse}</p>
-            <br/>
-            <p><strong>Classificação:</strong> {this.state.filme.classi_indicativa}</p>
-            <p><strong>Data de estreia:</strong> {moment(this.state.filme.data_estreia).format('DD/MM/YYYY')}</p>
+            <br />
+            <p>
+              <strong>Classificação:</strong>{" "}
+              {this.state.filme.classi_indicativa}
+            </p>
+            <p>
+              <strong>Data de estreia:</strong>{" "}
+              {moment(this.state.filme.data_estreia).format("DD/MM/YYYY")}
+            </p>
           </div>
         )}
       </div>

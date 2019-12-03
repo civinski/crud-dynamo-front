@@ -1,11 +1,11 @@
-import React from 'react';
-import './styles.css';
-import Header from './components/header';
-import Routes from './routes';
+import React from "react";
+import "./styles.css";
+import Header from "./components/header";
+import Routes from "./routes";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Routes />
     </div>
