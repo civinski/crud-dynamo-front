@@ -3,6 +3,7 @@ import api from "../../services/API";
 import "./styles.css";
 import { PropagateLoader } from "react-spinners";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 export default class Product extends Component {
   constructor(props) {
@@ -36,6 +37,8 @@ export default class Product extends Component {
       });
   };
 
+  apagar = () => {};
+
   render() {
     return (
       <div className='main'>
@@ -57,6 +60,10 @@ export default class Product extends Component {
               <strong>Data de estreia:</strong>{" "}
               {moment(this.state.filme.data_estreia).format("DD/MM/YYYY")}
             </p>
+
+            <Link className='botao' to={`/cadastro/${this.state.hashcod}`}>
+              Editar
+            </Link>
           </div>
         )}
       </div>

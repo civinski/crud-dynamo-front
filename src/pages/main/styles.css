@@ -106,3 +106,26 @@
 .product-list .actions button:hover {
   opacity: 0.7;
 }
+
+.product-list .botao {
+  height: 42px;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #37b6ae;
+  background: none;
+  margin-top: 10px;
+  color: #37b6ae;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.botao:hover {
+  background: #37b6ae;
+  color: #fff;
+  transition: all 0.2s;
+}

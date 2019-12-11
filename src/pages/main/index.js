@@ -34,11 +34,23 @@ export default class Main extends Component {
       });
   };
 
+  apagar = hashcod => {
+    api
+      .delete(`/filmes/${hashcod}`)
+      .then(res => {
+        console.log(res);
+        if (res.data) {
+          this.loadProducts();
+        }
+      })
+      .catch(e => console.log(e));
+  };
+
   render() {
     return (
       <>
         <div id='adicionarNovo'>
-          <Link to={`/filme`}>Adicionar novo</Link>
+          <Link to={`/cadastro/new`}>Adicionar novo</Link>
         </div>
         <div className='product-list'>
           {this.state.loading ? (
@@ -51,10 +63,22 @@ export default class Main extends Component {
                 <article key={item.hashcod}>
                   <strong>{item.nome}</strong>
                   <p>
-                    {item.sinopse ? item.sinopse.slice(0, 150) + "..." : ""}
+                    {item.sinopse
+                      ? item.sinopse.length > 150
+                        ? item.sinopse.slice(0, 150) + "..."
+                        : item.sinopse
+                      : ""}
                   </p>
 
                   <Link to={`/filme/${item.hashcod}`}>Detalhes</Link>
+
+                  <button
+                    type='button'
+                    className='botao'
+                    onClick={() => this.apagar(item.hashcod)}
+                  >
+                    Apagar
+                  </button>
                 </article>
               );
             })
